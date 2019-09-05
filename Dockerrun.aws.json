@@ -1,0 +1,36 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+	  {
+            "name": "client",
+	    "image": "saint/multi-client",
+	    "hostname": "client",
+	    "essential": false
+	  },
+	  {
+            "name": "server",
+	    "image": "saint/multi-server",
+	    "hostname": "api",
+	    "essential": false
+	  },
+	  {
+            "name": "worker",
+	    "image": "saint/multi-worker",
+	    "hostname": "worker",
+	    "essential": false
+	  },
+	  {
+            "name": "nginx",
+	    "image": "saint/multi-nginx",
+	    "hostname": "nginx",
+	    "essential": true,
+	    "portMappings": [
+		    {
+		      "hostPort": 80,
+		      "containerPort": 80
+		    }
+	    ],
+	    "links": ["client", "server"]
+	  }
+  ]
+}

@@ -19,4 +19,19 @@ after_success:
 # - docker push saint/multi-client
 # - docker push saint/multi-nginx
 # - docker push saint/multi-server
-# - docker push saint/multi-worker   
+# - docker push saint/multi-worker
+#
+# deploy:
+#   provider: elasticbeanstalk
+#   region: europe-german is from the subdomain of aws
+#   app: multi-docker
+#   env: MultiDocker-env
+#   bucket_name: elasticbeanstalk (from S3)
+#   bucket_path: docker-multi
+#   on:
+#    branch: master
+#   access_key_id:
+#     secure: $AWS_ACCESS_KEY
+#   secret_access_key:
+#     secure: $AWS_SECRET_KEY
+#
